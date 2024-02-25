@@ -1,0 +1,41 @@
+{% extends 'admin_panel.html' %}
+
+{% block admin_panel_body %}
+    <div class="loading-animation">
+        <img src="static/media/loading.gif" alt="Loading" width="45px">
+    </div>
+
+    <table class="h-table" id="rooms-table">
+        <thead>
+            <tr>
+                <th colspan="5">
+                    <div class="header">
+                        <div class="title">
+                            Таблица комнат
+                        </div>
+                    </div>
+                </th>
+                <tr class="table-header">
+                    <th>Номер</th>
+                    <th>Тип</th>
+                    <th>Цена $</th>
+                    <th></th>
+                </tr>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+{% endblock %}
+
+{% block script_block %}
+    <script src="static/js/rooms.js"></script>
+    <script>
+        let tbody = document.querySelector("#rooms-table > tbody");
+
+        if (tbody != null) {
+            LoadRooms();
+        }
+    </script>
+{% endblock %}

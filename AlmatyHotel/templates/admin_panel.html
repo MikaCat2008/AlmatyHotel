@@ -1,0 +1,46 @@
+{% extends 'container.html' %}
+
+{% block container_body %}
+    <div class="admin-panel">
+        <div class="menu">
+            <div class="buttons">
+                <div class="button-complex">
+                    <div class="case"><a href="/">Главная</a></div>
+                </div>
+                <div class="button-complex">
+                    <div class="case"><a href="/rooms">Комнаты</a></div>
+                    <div class="case"><a href="/employees">Сотрудники</a></div>
+                    <div class="case"><a href="/reservations">Бронировки</a></div>
+                    <div class="case"><a href="/renovations">Ремонты</a></div>
+                    <div class="case"><a href="/cleaning">Уборки</a></div>
+                    <div class="case"><a href="/rooms-checkerboard">Шахматка комнат</a></div>
+                </div>
+                <div class="button-complex">
+                    <div class="case"><a href="/add-room">Добавить комнату</a></div>
+                    <div class="case"><a href="/add-employee">Добавить сотрудника</a></div>
+                    <div class="case"><a href="/add-reservation">Забронировать комнату</a></div>
+                    <div class="case"><a href="/add-renovation">Назначить ремонт</a></div>
+                    <div class="case"><a href="/add-cleaning">Назначить уборку</a></div>
+                </div>
+            </div>
+            <div class="logo">
+                <img src="static/media/logo.png" alt="" width="130px">
+            </div>
+            <div class="exit">
+                <div class="case"><a href="/exit">Выход</a></div>
+            </div>
+        </div>
+
+        <div class="body">
+            <div id="show-text">
+                <span></span>
+            </div>
+
+            {% block admin_panel_body %} {% endblock %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block _script_block %}
+    {% block script_block %} {% endblock %}
+{% endblock %}

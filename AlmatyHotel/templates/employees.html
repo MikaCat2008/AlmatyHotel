@@ -1,0 +1,47 @@
+{% extends 'admin_panel.html' %}
+
+{% block admin_panel_body %}
+    <div class="loading-animation">
+        <img src="static/media/loading.gif" alt="Loading" width="45px">
+    </div>
+
+    <table class="h-table" id="employees-table">
+        <thead>
+            <tr>
+                <th colspan="10">
+                    <div class="header">
+                        <div class="title">
+                            Таблица сотрудников
+                        </div>
+                    </div>
+                </th>
+                <tr class="table-header">
+                    <th>ID</th>
+                    <th>ФИО</th>
+                    <th>Возраст</th>
+                    <th>Пол</th>
+                    <th>Должность</th>
+                    <th>Оклад</th>
+                    <th>Телефон</th>
+                    <th>Адрес</th>
+                    <th>Почта</th>
+                    <th></th>
+                </tr>
+            </tr>
+        </thead>
+        <tbody>
+            
+        </tbody>
+    </table>
+{% endblock %}
+
+{% block script_block %}
+    <script src="static/js/employees.js"></script>
+    <script>
+        let tbody = document.querySelector("#employees-table > tbody");
+
+        if (tbody != null) {
+            LoadEmployees();
+        }
+    </script>
+{% endblock %}

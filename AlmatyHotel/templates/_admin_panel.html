@@ -1,0 +1,76 @@
+{% extends 'admin_panel.html' %}
+
+{% block admin_panel_body %}
+    <div class="header">
+        <div class="title">
+            Админ панель Almaty Hotel
+        </div>
+    </div>
+
+    <div class="control-blocks">
+        <div class="control-block">
+            <div class="control-block-title">
+                <span>Комнаты</span>
+            </div>
+            <div class="control-block-body">
+                <ul>
+                    <li><a href="/rooms">Таблица комнат</a></li>
+                    <li><a href="/add-room">Добавить комнату</a></li>
+                    <li><a href="/rooms-checkerboard">Шахматка комнат</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="control-block">
+            <div class="control-block-title">
+                <span>Сотрудники</span>
+            </div>
+            <div class="control-block-body">
+                <ul>
+                    <li><a href="/employees">Таблица сотрудников</a></li>
+                    <li><a href="/add-employee">Добавить сотрудника</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="control-block">
+            <div class="control-block-title">
+                <span>Бронировки</span>
+            </div>
+            <div class="control-block-body">
+                <ul>
+                    <li><a href="/reservations">Таблица бронировок комнат</a></li>
+                    <li><a href="/add-reservation">Забронировать комнату</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="control-block">
+            <div class="control-block-title">
+                <span>Ремонты</span>
+            </div>
+            <div class="control-block-body">
+                <ul>
+                    <li><a href="/renovations">Таблица назначеных ремонтов</a></li>
+                    <li><a href="/add-renovation">Назначить ремонт</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="control-block">
+            <div class="control-block-title">
+                <span>Уборки</span>
+            </div>
+            <div class="control-block-body">
+                <ul>
+                    <li><a href="/cleaning">Таблица назначеных уборок</a></li>
+                    <li><a href="/add-cleaning">Назначить уборку</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block script_block %}
+    <script>
+        if ({{ just_logged }}) {
+            ShowText("Добро пожаловать в админ панель Almaty Hotel!");
+        }
+    </script>
+{% endblock %}

@@ -1,0 +1,92 @@
+{% extends 'admin_panel.html' %}
+
+{% block admin_panel_body %}
+    <div class="header">
+        <div class="title">
+            Форма добавления сотрудника
+        </div>
+    </div>
+
+    <div class="add-form">
+        <div class="main">
+            <div class="left">
+                <div class="employee-full-name">
+                    <span>ФИО</span>
+                </div>
+                <div class="employee-age">
+                    <span>Возраст</span>
+                </div>
+                <div class="employee-gender">
+                    <span>Пол</span>
+                </div>
+                <div class="employee-job">
+                    <span>Должность</span>
+                </div>
+                <div class="employee-salary">
+                    <span>Оклад</span>
+                </div>
+                <div class="employee-phone">
+                    <span>Телефон</span>
+                </div>
+                <div class="employee-address">
+                    <span>Адрес</span>
+                </div>
+                <div class="employee-mail">
+                    <span>Почта</span>
+                </div>
+            </div>
+            <div class="right">
+                <div id="employee-full-name">
+                    <input type="text">
+                </div>
+                <div id="employee-age">
+                    <input type="text">
+                </div>
+                <div id="employee-gender">
+                    <select>
+                        <option value="0">Женщина</option>
+                        <option value="1">Мужчика</option>
+                    </select>
+                </div>
+                <div id="employee-job">
+                    <select>
+                        <option value="0">Менеджер отеля (Hotel Manager)</option>
+                        <option value="1">Администратор (Front Desk Clerk)</option>
+                        <option value="2">Консьерж (Concierge)</option>
+                        <option value="3">Портье (Bellhop)</option>
+                        <option value="4">Горничная (Housekeeper)</option>
+                        <option value="5">Повар (Chef)</option>
+                        <option value="6">Повара-помощники (Cook)</option>
+                        <option value="7">Официанты (Waitstaff)</option>
+                        <option value="8">Технический персонал (Maintenance Staff)</option>
+                        <option value="9">Менеджер по продажам (Sales Manager)</option>
+                    </select>
+                </div>
+                <div id="employee-salary">
+                    <input type="text">
+                </div>
+                <div id="employee-phone">
+                    <input type="text">
+                </div>
+                <div id="employee-address">
+                    <input type="text">
+                </div>
+                <div id="employee-mail">
+                    <input type="text">
+                </div>
+            </div>
+        </div>
+        <div id="submit">
+            <input type="button" value="Добавить">
+        </div>
+    </div>
+{% endblock %}
+
+{% block script_block %}
+    <script src="static/js/employees.js"></script>
+    <script>
+        let SubmitElement = document.querySelector("#submit > input");
+
+        SubmitElement.onclick = async event => await CreateEmployee();
+    </script>
+{% endblock %}

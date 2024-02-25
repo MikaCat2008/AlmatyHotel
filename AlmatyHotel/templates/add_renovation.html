@@ -1,0 +1,49 @@
+{% extends 'admin_panel.html' %}
+
+{% block admin_panel_body %}
+    <div class="header">
+        <div class="title">
+            Форма назначения ремонта
+        </div>
+    </div>
+
+    <div class="add-form">
+        <div class="main">
+            <div class="left">
+                <div class="room-id-text">
+                    <span>Номер комнаты</span>
+                </div>
+                <div class="occupation-start-text">
+                    <span>Начало ремонта</span>
+                </div>
+                <div class="occupation-days-text">
+                    <span>Количество дней</span>
+                </div>
+            </div>
+            <div class="right">
+                <div id="room-id">
+                    <input type="text">
+                </div>
+                <div id="occupation-start">
+                    <input type="date">
+                </div>
+                <div id="occupation-days">
+                    <input type="text" value="1">
+                </div>
+            </div>
+        </div>
+        <div id="submit">
+            <input type="button" value="Добавить">
+        </div>
+    </div>
+{% endblock %}
+
+{% block script_block %}
+    <script src="static/js/occupations.js"></script>
+    <script>
+        document.querySelector("#occupation-start > input").valueAsDate = new Date();
+        let SubmitElement = document.querySelector("#submit > input");
+
+        SubmitElement.onclick = async event => await CreateOccupation(2);
+    </script>
+{% endblock %}

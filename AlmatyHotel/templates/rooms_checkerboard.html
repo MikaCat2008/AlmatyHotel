@@ -1,0 +1,35 @@
+{% extends 'admin_panel.html' %}
+
+{% block admin_panel_body %}
+    <div class="loading-animation">
+        <img src="static/media/loading.gif" alt="Loading" width="45px">
+    </div>
+
+    <table class="v-table" id="rooms-checkerboard-table">
+        <thead>
+            <tr>
+                <th colspan="1">
+                    <div class="header">
+                        <input type="button" onclick="MonthPrev()" value="<- Предыдущий месяц">
+                        <div class="title"></div>
+                        <input type="button" onclick="MonthNext()" value="Следующий месяц ->">
+                    </div>
+                </th>
+                <tr class="table-header">
+                    <th>№</th>
+                </tr>
+            </tr>
+        </thead>
+        <tbody>
+            
+        </tbody>
+    </table>
+{% endblock %}
+
+{% block script_block %}
+    <script src="static/js/rooms_checkerboard.js"></script>
+    <script>
+        LoadMonth({{ year }}, {{ month }});
+        SetTitle("{{ month_name }}" + " {{ year }}");
+    </script>
+{% endblock %}

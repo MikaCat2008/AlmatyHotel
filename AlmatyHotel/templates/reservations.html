@@ -1,0 +1,41 @@
+{% extends 'admin_panel.html' %}
+
+{% block admin_panel_body %}
+    <div class="loading-animation">
+        <img src="static/media/loading.gif" alt="Loading" width="45px">
+    </div>
+
+    <table class="h-table" id="reservations-table">
+        <thead>
+            <tr>
+                <th colspan="4">
+                    <div class="header">
+                        <div class="title">
+                            Таблица бронировок комнат
+                        </div>
+                    </div>
+                </th>
+                <tr class="table-header">
+                    <th>Номер комнаты</th>
+                    <th>Дата бронирования</th>
+                    <th>Дни</th>
+                    <th></th>
+                </tr>
+            </tr>
+        </thead>
+        <tbody>
+            
+        </tbody>
+    </table>
+{% endblock %}
+
+{% block script_block %}
+    <script src="static/js/occupations.js"></script>
+    <script>
+        let tbody = document.querySelector("#reservations-table > tbody");
+
+        if (tbody != null) {
+            LoadOccupations(tbody, 1);
+        }
+    </script>
+{% endblock %}

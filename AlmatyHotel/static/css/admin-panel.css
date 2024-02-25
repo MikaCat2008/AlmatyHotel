@@ -1,0 +1,458 @@
+body {
+    width: 100vw;
+    height: 100vh;
+
+    margin: 0;
+    padding: 0;
+
+    font-family: monospace;
+
+    background-color: #d4d4d4;
+}
+
+.container {
+    position: absolute;
+
+    width: 90vw;
+    height: 90vh;
+
+    top: 5vh;
+    left: 5vw;
+
+    background-color: #cfcfcf;
+
+    border: 2px solid rgb(171, 171, 171);
+    border-radius: 20px;
+
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.admin-panel {
+    display: flex;
+
+    height: 100%;
+    border-radius: 20px;
+}
+
+.menu {
+    width: 250px;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    background-color: #004a6a;
+
+    border-top-left-radius: 20px ;
+    border-bottom-left-radius: 20px ;
+}
+
+.button-complex {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    margin-top: 15px;
+}
+
+.case {
+    width: 95%;
+    
+    font-size: 18px;
+    text-align: center;
+
+    background-color: #006199;
+
+    margin: 2px 0px;
+    padding: 1px 0px;
+
+    border-radius: 15px;
+
+    user-select: none;
+}
+
+.case a {
+    display: block;
+
+    width: 100%;
+
+    color: rgb(223, 223, 223);
+
+    margin-left: 2px;
+
+    cursor: default;
+    text-decoration: none;
+}
+
+.case a:hover {
+    color: rgb(255, 255, 255);
+    background-color: #004a75;
+}
+
+.exit {
+    width: 95%;
+
+    margin: 0px 0px 20px 2px;
+}
+
+.body {
+    width: 100%;
+
+    overflow-y: auto;
+
+    border-top-right-radius: 20px;
+}
+
+.cell {
+    height: 30px;
+
+    background-color: #fff;
+}
+
+.reservation-cell {
+    background-color: rgb(255, 77, 0);
+}
+
+.renovation-cell {
+    background-color: rgb(96, 96, 96);
+}
+
+.cleaning-cell {
+    background-color: rgb(0, 234, 202);
+}
+
+table {
+    width: 100%;
+}
+
+table th {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+
+    padding: 0px 6px;
+}
+
+table td {
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+
+    padding: 0px 6px;
+}
+
+table th:first-child,
+table td:first-child {
+    border-left: 1px solid black;
+}
+
+table, th, td {
+    color: rgb(215, 215, 215);
+    background-color: rgb(0, 113, 184);
+
+    font-size: 16px;
+    text-align: center;
+
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+thead th {
+    padding: 0;
+    z-index: 1;
+}
+
+#reservations-table thead th, 
+#rooms-table thead th, 
+#rooms-checkerboard-table thead th {
+    position: sticky;
+    top: 0px;
+}
+
+#rooms-checkerboard-table tr th:nth-child(1), 
+#rooms-checkerboard-table tr td:nth-child(1) {
+    position: sticky;
+    left: 0px;
+}
+
+input, select {
+    color: rgb(215, 215, 215);
+    background-color: rgb(0, 113, 184);
+    
+    font-size: 16px;
+    text-align: center;
+
+    border-radius: 10px;
+
+    border: 0;
+    outline: 0;
+}
+
+td input {
+    width: 100%;
+}
+
+.loading-animation {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(150%, -100%);
+}
+
+.error-element {
+    color: #353535;
+    background-color: rgb(184, 0, 0);
+}
+
+.error-parent-element {
+    background-color: rgb(184, 0, 0);
+
+    border: 2px solid rgb(88, 0, 0);
+}
+
+.change-element {
+    color: #353535;
+    background-color: rgb(0, 184, 55);
+}
+
+.change-parent-element {
+    background-color: rgb(0, 184, 55);
+
+    border: 2px solid rgb(0, 88, 28);
+}
+
+.header {
+    display: flex;
+
+    align-items: center;
+
+    background-color: rgb(0, 113, 184);
+    border: 1px solid rgb(0, 65, 105);
+}
+
+.title {
+    width: 100%;
+
+    font-size: 22px;
+    text-align: center;
+
+    color: #cfcfcf;
+}
+
+.header input {
+    font-size: 16px;
+    text-align: center;
+
+    color: rgb(215, 215, 215);
+    background-color: rgb(0, 113, 184);
+
+    border: 1px solid rgb(0, 65, 105);
+    outline: 0;
+}
+
+.header input:hover {
+    background-color: rgb(0, 97, 157);
+
+    border: 1px solid rgb(0, 55, 89);
+}
+
+.table-header th, .table-header td {
+    top: 29px!important;
+}
+
+.delete-element {
+    width: 25px;
+
+    color: black;
+    background-color: red;
+
+    padding: 0px;
+
+    user-select: none;
+}
+
+.delete-element:hover {
+    background-color: rgb(214, 0, 0);
+}
+
+.add-form, .login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 480px;
+
+    margin: 20px 0px 0px 20px;
+
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.login-form {
+    margin: 150px auto 0px auto;
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+
+    font-size: 18px;
+
+    margin: 10px 0px 20px 0px;
+}
+
+.main .left, .main .right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin: 0px 20px;
+}
+
+.main .left div {
+    height: 25px;
+}
+
+.main .left div span {
+    display: block;
+
+    width: 100%;
+    
+    color: white;
+    background-color: rgb(0, 113, 184);
+
+    border: 2px solid rgb(0, 65, 139);
+    border-radius: 15px;
+
+    padding: 1px 5px;
+}
+
+.main div div {
+    width: 100%;
+
+    height: 25px;
+    text-align: center;
+
+    margin-top: 7px;
+}
+
+.main input, .main select {
+    width: 100%;
+
+    color: black;
+    background-color: #cfcfcf;
+
+    border: 2px solid rgb(146, 146, 146);
+}
+
+#submit input {
+    width: 200px;
+    height: 30px;
+
+    border: 2px solid rgb(0, 65, 139);
+
+    margin: 50px 0px 20px 0px
+}
+
+#show-text {
+    display: flex;
+    align-items: center;
+    
+    position: absolute;
+
+    width: 280px;
+    height: 90px;
+
+    top: -100px;
+    right: 30px;
+
+    opacity: 0;
+
+    color: white;
+    background-color: rgb(0, 113, 184);
+
+    border: 2px solid rgb(0, 65, 139);
+    border-radius: 10px;
+
+    padding: 5px 10px;
+
+    transition: .8s;
+}
+
+.show-text-out {
+    top: 30px!important;
+
+    opacity: .8!important;
+}
+
+#show-text span {
+    display: block;
+
+    width: 100%;
+
+    font-size: 20px;
+
+    text-align: center;
+}
+
+.show-text-success {
+    color: black!important;
+    background-color: rgb(0, 184, 31)!important;
+
+    border: 2px solid rgb(0, 139, 9)!important;
+}
+
+.show-text-error {
+    background-color: rgb(184, 0, 0)!important;
+
+    border: 2px solid rgb(139, 0, 0)!important;
+}
+
+.control-blocks {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.control-block {
+    width: 330px;
+
+    border: 3px solid rgb(146, 146, 146);
+    border-radius: 10px;
+
+    margin-top: 20px;
+
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.control-block-title {
+    border-bottom: 3px solid rgb(146, 146, 146);
+
+    color: rgb(225, 225, 225);
+    background-color: rgb(0, 113, 184); 
+
+    font-size: 26px;
+    text-align: center;
+
+    padding: 3px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.control-block-body a {
+    color: rgb(0, 22, 130)!important;
+
+    text-decoration: none;
+
+    font-size: 20px;
+}
+
+.control-block-body li {
+    margin-top: 5px;
+}
+
+.control-block-body a:hover {
+    color: rgb(0, 42, 255)!important;
+}
