@@ -1,3 +1,11 @@
+"""
+
+Файл с тестированием функционала
+отеля
+
+"""
+
+
 import unittest
 
 from datetime import date

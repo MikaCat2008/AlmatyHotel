@@ -1,7 +1,20 @@
+"""
+
+Файл с остальными(служебными)
+роутерами
+
+
+"""
+
+
 from .tls import request, jsonify, redirect, _check_auth, Response, ApplicationType
 
 
 def login(app: ApplicationType) -> Response:
+    """
+    Роутер для авторизации
+    """
+    
     status, user, password = _check_auth(app, request.json)
 
     response = jsonify({"status": status})
@@ -14,6 +27,10 @@ def login(app: ApplicationType) -> Response:
 
 
 def exit(app: ApplicationType) -> Response:
+    """
+    Роутер для выхода из админ панели
+    """
+    
     response = redirect("/")
 
     response.delete_cookie("user")

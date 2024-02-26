@@ -1,36 +1,77 @@
+"""
+
+Файл с управлением базой данных.
+Имеет все методы CRUD.
+
+"""
+
+
 import sqlite3, logging
 
 from datetime import date
 
 from abstractions import SQLiteDatabaseType, HotelDatabaseType
 
+# Ссылка на обьект базы данных
 __database: SQLiteDatabaseType = None
 
 
 class SQLiteDatabase(SQLiteDatabaseType):
-    def __init__(self, filepath: str = "database/database.db") -> None:        
-        super().__init__()
-
+    """
+    Класс с базовым функционалом для
+    SQL базы данных
+    """
+    
+    def __init__(
+        self, 
+        filepath: str = "database/database.db"
+    ) -> None:
+        """
+        Подключение к файлу базы данных
+        """
+        
         self.connection = sqlite3.connect(filepath, check_same_thread=False)
         self.cursor = self.connection.cursor()
 
     def execute(self, query: str, *args) -> tuple:
+        """
+        Выполняет запросы базы данных
+        """
+        
         self.cursor.execute(query, args)
 
         self.connection.commit()
 
     def single(self) -> None:
+        """
+        Делает ссылкой на базу
+        данных этот обьект
+        """
+        
         global __database
         
         __database = self
 
     @classmethod
     def get_single(self) -> SQLiteDatabaseType:
+        """
+        Получает ссылку на базу данных
+        """
+        
         return __database
 
 
 class HotelDatabase(SQLiteDatabase, HotelDatabaseType):
+    """
+    Класс с функционал для базы данных
+    отеля
+    """
+    
     def create_tables(self) -> None:
+        """
+        Создает все нужные таблицы
+        """
+        
         self.execute("""
             CREATE TABLE IF NOT EXISTS Rooms (
                 RoomId INTEGER PRIMARY KEY,
@@ -64,6 +105,10 @@ class HotelDatabase(SQLiteDatabase, HotelDatabaseType):
         """)
 
     def delete_tables(self) -> None:
+        """
+        Удаляет все таблицы
+        """
+        
         self.execute("""
             DROP TABLE IF EXISTS Rooms;             
         """)
@@ -81,6 +126,11 @@ class HotelDatabase(SQLiteDatabase, HotelDatabaseType):
         room_type: int, 
         room_price: float
     ) -> int:
+        """
+        Создает комнату, принимая ее тип,
+        цену, а возвращает ее номер
+        """
+        
         self.execute("""
                 INSERT INTO Rooms VALUES(NULL, ?, ?);
             """, 
@@ -100,6 +150,13 @@ class HotelDatabase(SQLiteDatabase, HotelDatabaseType):
         employee_address: str,
         employee_mail: str
     ) -> int:
+        """
+        Создает сотрудника принимая его 
+        ФИО, возраст, пол, должность,
+        оклад, телефон, адрес, почту, а
+        возвращает его номер
+        """
+        
         self.execute("""
                 INSERT INTO Employees VALUES(NULL, ?, ?, ?, ?, ?, ?, ?, ?);
             """, 
@@ -116,6 +173,13 @@ class HotelDatabase(SQLiteDatabase, HotelDatabaseType):
         occupation_days: int,
         occupation_type: int
     ) -> int:
+        """
+        Создает занятость принимая ее
+        номер комнаты, начало занятости,
+        количество дней, тип, а возвращает
+        ее номер
+        """
+        
         self.execute("""
                 INSERT INTO Occupations VALUES(NULL, ?, ?, ?, ?);
             """, 
@@ -125,6 +189,10 @@ class HotelDatabase(SQLiteDatabase, HotelDatabaseType):
         return self.cursor.lastrowid
 
     def get_rooms(self) -> list[tuple[int, int, float]]:
+        """
+        Возвращает список комнат
+        """
+        
         self.execute("""
             SELECT * FROM Rooms;
         """)
@@ -132,6 +200,10 @@ class HotelDatabase(SQLiteDatabase, HotelDatabaseType):
         return list(self.cursor.fetchall())
     
     def get_employees(self) -> list[tuple[int, str, int, bool, int, int, str, str, str]]:
+        """
+        Возвращает список сотрудников
+        """
+        
         self.execute("""
             SELECT * FROM Employees;
         """)
@@ -139,6 +211,11 @@ class HotelDatabase(SQLiteDatabase, HotelDatabaseType):
         return list(self.cursor.fetchall())
 
     def get_occupations(self, occupation_type: int = None) -> list[int, int, date, int, int]:
+        """
+        Возвращает список занятостей,
+        принимая тип(необязательно)
+        """
+        
         if occupation_type is None:
             self.execute("""
                 SELECT * FROM Occupations;
@@ -156,6 +233,11 @@ class HotelDatabase(SQLiteDatabase, HotelDatabaseType):
         room_type: int, 
         room_price: float
     ) -> None:
+        """
+        Обновляет комнату, принимая ее
+        номер, тип, цену
+        """
+        
         self.execute("""
                 UPDATE Rooms
                 SET RoomType = ?,
@@ -177,6 +259,12 @@ class HotelDatabase(SQLiteDatabase, HotelDatabaseType):
         employee_address: str,
         employee_mail: str
     ) -> None:
+        """
+        Обновляет сотрудника, принимая его 
+        номер, ФИО, возраст, пол, должность,
+        оклад, телефон, адрес, почту
+        """
+        
         self.execute("""
                 UPDATE Employees
                 SET EmployeeFullName = ?, 
@@ -202,6 +290,12 @@ class HotelDatabase(SQLiteDatabase, HotelDatabaseType):
         occupation_days: int,
         occupation_type: int
     ) -> None:
+        """
+        Обновляет занятость, принимая ее
+        номер, номер комнаты, начальную
+        дату, количество дней, тип
+        """
+        
         self.execute("""
                 UPDATE Occupations
                 SET RoomId = ?,
@@ -214,6 +308,10 @@ class HotelDatabase(SQLiteDatabase, HotelDatabaseType):
         )
 
     def delete_room(self, room_id: int) ->  None:
+        """
+        Удаляет комнату, принимая ее номер
+        """
+        
         self.execute("""
             DELETE 
             FROM Rooms
@@ -221,6 +319,11 @@ class HotelDatabase(SQLiteDatabase, HotelDatabaseType):
         """, room_id)
 
     def delete_employee(self, employee_id: int) ->  None:
+        """
+        Удаляет сотрудникас принимая его
+        номер
+        """
+        
         self.execute("""
             DELETE 
             FROM Employees
@@ -228,6 +331,11 @@ class HotelDatabase(SQLiteDatabase, HotelDatabaseType):
         """, employee_id)
 
     def delete_occupation(self, occupation_id: int) ->  None:
+        """
+        Удаляет занятость, принимая ее
+        номер
+        """
+        
         self.execute("""
             DELETE 
             FROM Occupations

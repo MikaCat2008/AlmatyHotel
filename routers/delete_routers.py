@@ -1,3 +1,11 @@
+"""
+
+Файл с роутерами удаления
+
+
+"""
+
+
 from .tls import request, jsonify, check_auth, Response, ApplicationType
 
 

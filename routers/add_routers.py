@@ -1,3 +1,11 @@
+"""
+
+Файл с роутерами добавления
+
+
+"""
+
+
 from .tls import check_auth, render_template, Response, ApplicationType
 
 

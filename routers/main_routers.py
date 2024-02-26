@@ -1,3 +1,10 @@
+"""
+
+Файл с основными роутерами
+
+"""
+
+
 from datetime import datetime
 
 from .tls import request, make_response, check_auth, _check_auth, render_template, Response, ApplicationType
@@ -10,6 +17,14 @@ MONTH_NAMES = (
 
 
 def index(app: ApplicationType) -> Response:
+    """
+    Роутер авторизации и админ панели;
+    если только авторизировался, то
+    добавляет параметр just_logged,
+    который позволяет на сайте узнать о
+    том, что произошла авторизация
+    """
+    
     if _check_auth(app, request.cookies)[0]:
         just_logged = request.args.get("just_logged")
 
@@ -47,6 +62,13 @@ def cleaning(app: ApplicationType) -> Response:
 
 @check_auth
 def rooms_checkerboard(app: ApplicationType) -> Response:
+    """
+    Роутер шахматки комнат;
+    если параметры year или month не
+    указаны, то ставится текуший год и
+    месяц
+    """
+    
     year = request.args.get("year")
     month = request.args.get("month")
 

@@ -1,3 +1,11 @@
+"""
+
+Файл с роутерами создания
+
+
+"""
+
+
 from datetime import datetime
 
 from .tls import request, jsonify, check_auth, Response, ApplicationType

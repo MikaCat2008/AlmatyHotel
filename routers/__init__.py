@@ -1,3 +1,11 @@
+"""
+
+Файл со всеми роутерами сайта
+
+
+"""
+
+
 from typing import Callable
 
 from .main_routers import (
@@ -24,6 +32,10 @@ from .other_routers import (
 
 
 def get_routers() -> list[tuple[str, Callable, str]]:
+    """
+    Получает все роутеры
+    """
+    
     return [
         ("/", index, "GET"),
         ("/rooms", rooms, "GET"),

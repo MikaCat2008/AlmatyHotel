@@ -1,3 +1,10 @@
+"""
+
+Файл с роутерами получения
+
+"""
+
+
 from .tls import request, jsonify, check_auth, Response, ApplicationType
 
 

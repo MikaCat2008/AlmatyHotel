@@ -1,3 +1,10 @@
+"""
+
+Главный файл проекта, отсюда
+происходит запуск
+
+"""
+
 from database import HotelDatabase
 from application import Application
 

@@ -1,3 +1,10 @@
+"""
+
+Файл со всеми типами
+
+"""
+
+
 from __future__ import annotations
 
 from abc import ABC, abstractmethod, abstractclassmethod
